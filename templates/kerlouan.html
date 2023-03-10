@@ -1,0 +1,119 @@
+<%- include("_components/header.html", {
+  styles: ["page"],
+  title: "kerlouan"
+}) %>
+<main>
+      <div class="section-bandeau">
+        <img
+          src="./images/photo-bandeau-kerlouan.jpg"
+          width="100%"
+          height="760px"
+          alt="photo-kerlouan"
+        />
+      </div>
+      <div class="title"><h2>Kerlouan</h2></div>
+
+      <div class="section-carte">
+        <img class="carte-bretagne" src="./images/carte-kerlouan.jpg" width="100%" alt="carte-cote-des-legendes">
+        <p>
+            La côte des Légendes est un littoral de France situé en Bretagne, dans le Finistère. Elle tient son nom des nombreux sites historiques à l'origine de légendes, contes et histoires bretonnes.</p>
+        <p>
+          La Côte des Légendes est un petit fragment du littoral breton situé dans le Finistère Nord, à environ 15 minutes en voiture de la station balnéaire de Brest.
+        </p>     
+        <p>Elle s'étend sur près de 15 km entre les communes de Guissény et Goulven. Elle inclut également les plages de sable fin et territoires de Kerlouan, Brignogan-Plages et Plounéour-Trez.</p>
+        </p>
+      </div>
+
+      <div class="subtitle"><h3><span>Site de Meneham</span></h3></div>
+
+      <div class="section-article">
+        <img
+          src="./images/photo aérienne ménéham.jpg"
+          class="photo-left"
+          width="100%"
+          height="400px"
+          alt="photo-aerienne-meneham"
+        />
+        <div class="article">
+          <p>Meneham du breton « Menez ham », signifie « le hameau derrière le mont ».</p>
+          <p>Implanté sur la commune de Kerlouan, le site de Meneham se situe au cœur du Pays Pagan qui s’étire de Goulven jusqu’à Plouguerneau. Riche de 300 ans d'Histoire, le site de Meneham regorge d'histoire(s) grandeur nature.</p>
+          <p>Son acte de naissance remonte aux années 1756, lorsque le corps de garde est édifié au milieu des rochers. Quant au village, il est créé au XIXe siècle et abritait des douaniers puis des habitants vivant à la fois de la terre et de la mer.</p>
+        </div>
+        </div>
+
+        <div class="subtitle"><h3><span>Plage Boutrouilles</span></h3></div>
+
+      <div class="section-article">
+        <img
+          src="./images/photo-kerlouan-plage-des-boutrouilles.jpg"
+          class="photo-right"
+          width="100%"
+          height="400px"
+          alt="photo-kerlouan2"
+        />
+        <div class="article">
+          <p>
+            A deux pas de la station balnéaire de Brignogan-Plage,le village de Kerlouan est situé à deux kilomètres à vol d’oiseau de la mer. Son littoral est resté très préservé.
+          </p>
+            <p>
+              On trouve de nombreuses plages à Kerlouan, la plupart sont composées de sable et de granulite (gros rochers). Elles sont vastes et comptent parmi les plus belles plages du nord de la Bretagne.
+            </p>
+            <p>
+              En bord de mer et à proximité de deux belles plages, on trouve le hameau de Ménéham qui regroupe de nos jours une auberge, un musée, des ateliers d’artisans et une boutique ainsi qu’un ancien poste de garde dissimulé entre des rochers.
+          </p>
+        </div>
+        </div>
+
+        <div class="subtitle"><h3><span>Phare de Pontusval</span></h3></div>
+
+      <div class="section-article">
+        <img
+          src="./images/photo-phare-pontusval.jpg"
+          class="photo-left"
+          width="100%"
+          height="400px"
+          alt="photo-fouesnant"
+        />
+        <div class="article">
+          <p>
+            Le phare de Pontusval s’est éclairé pour la première fois le 15 septembre 1869.
+          </p>
+          <p>
+            Sa construction avait pour but de servir de relais entre le phare de l’Île Vierge et celui de l’Île de Batz, sur cette côte rocheuse où les naufrages étaient, malheureusement, nombreux.
+          </p>
+          <p>
+            Si la vocation des phares était avant tout la sécurité maritime, certains comme celui de Pontusval ont servi de base à l’armée allemande durant la Seconde Guerre Mondiale. D’ailleurs, on peut toujours voir un vestige de blockhaus dans le jardin
+          </p>
+        </div>
+      </div>
+
+      <div class="subtitle"><h3><span>Carte Google</span></h3></div>
+
+      <div class="carte-google-maps">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d42179.77102914259!2d-4.3918678157860755!3d48.6436062316666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sfr!4v1677680456436!5m2!1sfr!2sfr" width="1000" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <h3 class="title"><span>Laissez un commentaire</span></h3>
+      <form action ="comments/2">
+      <div class="section-comments comments">        
+        <div class="comment">
+          <label for="comment">Commentaire*</label><br>
+          <textarea id="comment" name="comment" rows="10" cols="86"></textarea>
+        </div>          
+
+          <div class="section-identifiant">
+            <div class="pseudo">
+              <label for="pseudo">Pseudo*</label><br>
+              <input type="text" autocomplete="off" id="pseudo" />
+            </div>
+           <div class="email">
+              <label for="email">Email*</label><br>
+              <input type="text" autocomplete="off" id="email" />
+           </div>            
+          </div>
+          <p>Votre adresse e-mail ne sera pas publié. Les champs obligatoires sont indiqués avec *.</p>         
+          <input type="submit" value="Envoyer">
+      </form>
+      </div>
+    </main>
+<%- include("_components/footer.html") %>

@@ -1,0 +1,73 @@
+<%- include("_components/header.html", {
+  styles: ["acceuil"],
+  title: "acceuil"
+}) %>
+
+<main>
+      <div class="imgBackground">
+        <img src="./images/bandeau-ile-vierge.webp" alt="photo-background" />
+      </div>
+      <div class="section-presentation">
+        <img
+          src="./images/photofamille.jpg"
+          width="350px"
+          alt="photo-famille"
+        />
+        <p class="presentation">
+          Passionné par la Bretagne depuis tout petit, nous avons décidé de
+          partarger nos coups de coeur. Entre le Finistère et le Morbihan, nous
+          avons découvert de super endroits, mais aussi des couleurs et des
+          paysages impressionnants! Sans oublier tout plein de jolie petites
+          villes, toutes plus belles les unes que les autres.
+        </p>
+      </div>
+
+      <h3><span>Nos derniers articles</span></h3>
+
+      <div class="section-image">
+        <div class="block-image">
+          <a href="./fouesnant.html"
+            ><img
+              class="photoCircle"
+              width="350px"
+              height="350px"
+              src="./images/photo-fouesnant.jpeg"
+              alt="Fouesnant"
+          /></a>
+          <a href="./fouesnant.html"><h4>Fouesnant</h4> </a>
+        </div>
+        <div class="block-image">
+          <a href="./kerlouan.html"
+            ><img
+              class="photoCircle"
+              width="350px"
+              height="350px"
+              src="./images/photo-kerlouan.jpg"
+              alt="Kerlouan"
+          /></a>
+          <a href="./kerlouan.html"><h4>Kerlouan</h4> </a>
+        </div>
+        <div class="block-image">
+          <a href="./crozon.html"
+            ><img
+              class="photoCircle"
+              width="350px"
+              height="350px"
+              src="./images/photo-crozon.jpg"
+              alt="Crozon"
+          /></a>
+          <a href="./crozon.html"><h4>Presqu'île de Crozon</h4> </a>
+        </div>
+      </div>
+
+      <h3><span>Carte de la Bretagne</span></h3>
+
+      <div class="section-carte">
+        <div class="block-carte">
+          <img src="./images/carte-de-bretagne.png" alt="carte-bretagne" />
+        </div>
+      </div>
+    </main>
+
+<%- include("_components/footer.html") %>
+

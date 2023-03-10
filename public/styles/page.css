@@ -1,0 +1,152 @@
+/******************main********************************/
+h2 {
+    padding: 2rem;
+    background-image: url(../images/background-h2.1.jpg);
+}
+p {
+    text-align: center;
+    line-height: 1.5rem;
+    padding: 0.5rem;
+  }
+  .section-article {
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .section-article > img {
+    max-width: 600px;
+  }
+  .article {
+    margin-top: 2rem;
+  }
+  .carte-google-maps{
+    margin: 1rem;
+  }
+  iframe{
+    width: 100%;
+  }
+.section-comments, .section-carte {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+}
+.section-carte > p {
+    margin-top: 2rem;
+}
+#comment, input {
+    margin: 0.6rem 0;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+}
+#comment {
+    border-radius: 0.6rem;
+    font-size: 1.10rem;
+    padding: 0.5rem;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+#email, #pseudo {
+    border-radius: 10px;
+    font-size: 1.10rem;
+    padding: 0.5rem;
+    width: 21.8rem;
+    margin-top: 0.5rem;
+}
+input[type="submit"] {
+    background: var(--color4);
+    color: var(--color1);
+    padding: 0.6rem;
+    border-radius: 0.6rem;
+    font-size: 1.2rem;
+    margin: 0.75rem auto 0;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+input[type="submit"]:hover {
+    filter: brightness(105%);
+    transform: translateX(2px);
+  }
+/*******************responsive************************/
+@media screen and (min-width: 900px) {
+    .section-carte {
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .section-comments {
+        max-width: 52rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1.25rem;
+        margin-bottom: 1.25rem;
+        padding: 0.6rem;
+    }
+    .comment {
+        width: 100%;
+    }
+    .section-identifiant {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 1.25rem;
+    }
+
+/*****************************************************/
+}
+@media screen and (min-width: 1024px) {
+    .section-bandeau {
+        width: 100%;
+    }
+    .section {
+        width: 80%;
+        margin-right: auto;
+        margin-left: auto;
+        overflow: hidden;
+    }
+    .carte-bretagne {
+    transition: 0.3s;
+    cursor: pointer;
+    height: 100%;
+    margin-bottom: 1.5rem;
+}
+.carte-bretagne:hover{
+        transform: scale(1.5);
+}
+.section-article {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    gap: 1.5rem;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.photo-left {
+    order: 2;
+}
+.article {
+    order: 1;
+}
+  .carte-google-maps {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+  }
+  .subtitle {
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  h2 {
+    padding: 1.2rem;
+    text-align: center;
+    font-size: 3rem;
+    margin: 3rem auto;
+}
+  }
