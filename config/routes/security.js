@@ -1,4 +1,4 @@
-import  { createPoolConnexion } from "../database.js"
+/*import  { createPoolConnexion } from "../database.js"
 import { createSession, clearSession } from "../../security/session.js"
 import argon2 from "argon2"
 
@@ -33,4 +33,4 @@ export async function logout(req, res) {
   await clearSession(res, req.auth.sessid)
 
   res.redirect('/login')
-}
+}*/

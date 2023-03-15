@@ -75,7 +75,7 @@
       #security span {
         display: inline;
       }
-      input[type="submit"] {
+      input[type="submit"], input[type="button"] {
         border: none;
         background: linear-gradient(65deg, var(--color4),var(--color3));
         width: 50%;
@@ -87,7 +87,7 @@
         cursor: pointer;
         transition: 0.3s ease;
       }
-      input[type="submit"]:hover {
+      input[type="submit"], input[type="button"]:hover {
         filter: brightness(105%);
         transform: translateX(2px);
       }

@@ -1,7 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { getPoolConnexion } from '../../config/database.js';
 import signature from 'cookie-signature';
-/*import roleRepository from '../repositories/roleRepository.js';*/
 
 // middleware permettant de tenter de connecter l'utilisateur
 // si l'utilisateur est connecté, donnera accès aux prochains middleware
@@ -50,13 +49,6 @@ export async function tryAuthentication (req, res, next) {
 }
 
 export async function createSession (res, user) {
-  const roles = await roleRepository
-    .findUserRoles(user.id)
-
-  console.log(roles);
-
-  user.roles = roles.map(r => r.name);
-
   // Nous définissons un identifiant unique
   const uuid = uuidv4();
   // ainsi qu'une date d'expiration

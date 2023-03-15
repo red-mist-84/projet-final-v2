@@ -22,3 +22,7 @@ export async function crozon(req, res) {
 export async function contact(req, res) {
     res.render("contact.html")
 }
+
+export async function admin(req, res) {
+    res.render("admin.html")
+}

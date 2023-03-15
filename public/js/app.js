@@ -4,6 +4,8 @@ const content = document.querySelector(".content");
 const search = document.getElementById("search");
 const btn2 = document.getElementById("iconSearch");
 
+/***************sidebar**************************/
+
 btn.addEventListener("click", () => {
   sidebar.classList.toggle("active");
 });
@@ -15,10 +17,14 @@ btn2.addEventListener("click", function() {
     search.style.display = "none";
   }
 });
-const form = document.getElementById("connection");
-form.addEventListener("submit", async(e)=> {
+
+/*********************formulaire*************************/
+/*******************************connection***************/
+/*****************************************cookies********/
+
+const formConnection = document.getElementById("connection");
+formConnection.addEventListener("submit", async(e)=> {
   e.preventDefault()
-  console.log(e);
   const formulaire = e.currentTarget;
   const dataForm = new FormData(formulaire);
   const newUser = {
@@ -36,12 +42,39 @@ form.addEventListener("submit", async(e)=> {
   .then(resp => resp.json())
   .then(data => console.log(data))
 })
+/*********************************inscription**************/
+
+const formInscription = document.getElementById("inscription");
+formInscription.addEventListener("submit", async(e)=> {
+  e.preventDefault()
+  console.log(e);
+  const formulaire = e.currentTarget;
+  const dataForm = new FormData(formulaire);
+  const isUser = {
+    email: dataForm.get("email"),
+    password: dataForm.get("password"),
+    pseudo: dataForm.get("pseudo"),
+    confirm: dataForm.get("confirm")
+  }
+  console.log(isUser)
+  await fetch("/inscription", {
+    method:"POST", 
+    headers:{
+      "Content-Type":"application/json",
+    },
+    body:JSON.stringify(isUser)
+  })
+  .then(resp => resp.json())
+  .then(data => console.log(data))
+})
+
+/*********************************************************************/
 
 const inputs = document.querySelectorAll(
   'input[type="text"], input[type="password"]'
 );
 const progressBar = document.getElementById("progress-bar");
-let pseudo, email, password, confirmPass;
+let pseudo, emailInscription, passwordInscription, confirm;
 
 const errorDisplay = (tag, message, valid) => {
   const container = document.querySelector("." + tag + "-container");
@@ -50,9 +83,11 @@ const errorDisplay = (tag, message, valid) => {
   if (!valid) {
     container.classList.add("error");
     span.textContent = message;
+    console.log(container.classList)
   } else {
     container.classList.remove("error");
     span.textContent = message;
+    console.log(container.classList)
   }
 };
 
@@ -75,10 +110,10 @@ const pseudoChecker = (value) => {
 const emailChecker = (value) => {
   if (!value.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i)) {
     errorDisplay("email", "Le mail n'est pas valide");
-    email = null;
+    emailInscription = null;
   } else {
     errorDisplay("email", "", true);
-    email = value;
+    emailInscription = value;
   }
 };
 
@@ -95,26 +130,26 @@ const passwordChecker = (value) => {
       "Minimum de 8 caractères, une majuscule, un chiffre et un caractère spécial"
     );
     progressBar.classList.add("progressRed");
-    password = null;
+    passwordInscription = null;
   } else if (value.length < 12) {
     progressBar.classList.add("progressBlue");
-    errorDisplay("password", "", true);
-    password = value;
+    errorDisplay("passwordInscription", "", true);
+    passwordInscription = value;
   } else {
     progressBar.classList.add("progressGreen");
-    errorDisplay("password", "", true);
-    password = value;
+    errorDisplay("passwordInscription", "", true);
+    passwordInscription = value;
   }
-  if (confirmPass) confirmChecker(confirmPass);
+  if (confirm) confirmChecker(confirm);
 };
 
 const confirmChecker = (value) => {
-  if (value !== password) {
+  if (value !== passwordInscription) {
     errorDisplay("confirm", "Les mots de passe ne correspondent pas");
-    confirmPass = false;
+    confirm = false;
   } else {
     errorDisplay("confirm", "", true);
-    confirmPass = true;
+    confirm = true;
   }
 };
 
@@ -139,14 +174,15 @@ inputs.forEach((input) => {
   });
 });
 
-form.addEventListener("submit", (e) => {
+formInscription.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  if (pseudo && email && password && confirmPass) {
+  if (pseudo && emailInscription && passwordInscription && confirm) {
     const data = {
       pseudo,
-      email,
-      password,
+      emailInscription,
+      passwordInscription,
+      confirm
     };
     console.log(data);
 
@@ -154,14 +190,11 @@ form.addEventListener("submit", (e) => {
     progressBar.classList = "";
 
     pseudo = null;
-    email = null;
-    password = null;
-    confirmPass = null;
+    emailInscription = null;
+    passwordInscription = null;
+    confirm = null;
     alert("Inscription validée !");
   } else {
     alert("veuillez remplir correctement les champs");
   }
 });
-
-
-
