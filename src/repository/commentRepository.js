@@ -1,6 +1,15 @@
-import baseRepository from "./baseRepository.js"
+import { createPoolConnection } from "../../config/database.js"
 
-async function findPostComments(postId) {
+
+export async function addComment (id, author_id, theme_id, content) {
+    const [info] = await createPoolConnection().query(`SELECT * FROM comments WHERE theme_id = ?`, [theme_id])
+    if(info.length > 0){
+        return info
+    }
+    return null
+}
+
+/*async function findPostComments(postId) {
     return baseRepository
         .find(`SELECT c.id, c.content, u.pseudo AS author
             FROM comments c
@@ -25,4 +34,4 @@ export default {
     findPostComments,
     insertComment,
     ...baseRepository
-}
+}*/

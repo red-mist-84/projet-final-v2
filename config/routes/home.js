@@ -1,6 +1,10 @@
 import { article } from "../../src/repository/articleRepository.js"
+import jwt from 'jsonwebtoken';
+import argon2 from 'argon2'
+import { createPoolConnection } from "../../config/database.js";
 
 export function home(req, res) {
+    console.log(req.session)
     res.render("acceuil.html")
 }
 
@@ -24,5 +28,6 @@ export async function contact(req, res) {
 }
 
 export async function admin(req, res) {
+    console.log(req.session)
     res.render("admin.html")
 }

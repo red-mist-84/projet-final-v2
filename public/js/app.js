@@ -1,10 +1,11 @@
 const sidebar = document.querySelector(".visible");
 const btn = document.querySelector(".hamburger")
-const content = document.querySelector(".content");
 const search = document.getElementById("search");
 const btn2 = document.getElementById("iconSearch");
+const btn3 = document.getElementById("login");
+const login = document.getElementById("connection");
 
-/***************sidebar**************************/
+/***************sidebar-navbar**************************/
 
 btn.addEventListener("click", () => {
   sidebar.classList.toggle("active");
@@ -18,11 +19,16 @@ btn2.addEventListener("click", function() {
   }
 });
 
+btn3.addEventListener("click", () => {
+  login.classList.toggle("loginactive");
+  console.log(login);
+});
+
 /*********************formulaire*************************/
 /*******************************connection***************/
 /*****************************************cookies********/
 
-const formConnection = document.getElementById("connection");
+/*const formConnection = document.getElementById("connection");
 formConnection.addEventListener("submit", async(e)=> {
   e.preventDefault()
   const formulaire = e.currentTarget;
@@ -44,7 +50,7 @@ formConnection.addEventListener("submit", async(e)=> {
 })
 /*********************************inscription**************/
 
-const formInscription = document.getElementById("inscription");
+/*const formInscription = document.getElementById("inscription");
 formInscription.addEventListener("submit", async(e)=> {
   e.preventDefault()
   console.log(e);
@@ -66,13 +72,11 @@ formInscription.addEventListener("submit", async(e)=> {
   })
   .then(resp => resp.json())
   .then(data => console.log(data))
-})
+})*/
 
 /*********************************************************************/
 
-const inputs = document.querySelectorAll(
-  'input[type="text"], input[type="password"]'
-);
+const inputs = document.getElementById("pseudo", "emailInscription");
 const progressBar = document.getElementById("progress-bar");
 let pseudo, emailInscription, passwordInscription, confirm;
 
@@ -174,7 +178,7 @@ inputs.forEach((input) => {
   });
 });
 
-formInscription.addEventListener("submit", (e) => {
+login.addEventListener("submit", (e) => {
   e.preventDefault();
 
   if (pseudo && emailInscription && passwordInscription && confirm) {

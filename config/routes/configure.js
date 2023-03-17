@@ -1,23 +1,20 @@
 import { home, fouesnant, kerlouan, crozon, contact, admin } from "./home.js"
-/*import { blog, slug } from "./blog.js"*/
-/*import { indexPosts, admin } from "./admin/dashboard.js"
-import { login, logout} from "./security.js"
-import accessChecker from '../../security/accessCheckers.js'*/
+import express from "express";
+import { createUser, connectUser, logout } from "../../src/controller/user_controller.js";
+import { isSessionActive } from "../../src/middleware/setting.js";
+const router = express.Router();
 
-export function configRoutes(app) {
-    app.get("/",home)
-    app.get("/fouesnant", fouesnant)
-    app.get("/kerlouan", kerlouan)
-    app.get("/crozon", crozon)
-    app.get("/contact",contact)
-    app.get("/admin", admin)
+    router.get("/", home)
+    router.get("/fouesnant", fouesnant)
+    router.get("/kerlouan", kerlouan)
+    router.get("/crozon", crozon)
+    router.get("/contact",contact)
+    router.get("/admin", admin)
     
-    app.post("/comments/:idtheme") 
+    router.post("/comments/:idtheme") 
+    router.post("/admin", isSessionActive, connectUser)
+    router.post("/inscription", createUser)
     
-    /*app.get("/login", accessChecker.isNotLogged, login)
-    app.post("/login", accessChecker.isNotLogged, login)
-    app.get('/logout', accessChecker.isLogged, logout)
-    app.get('/admin/posts', accessChecker.isLogged, indexPosts)
-    app.get("/admin", accessChecker.isLogged, admin)
-    app.get("/blog/:slug", slug)*/
-}
+    router.get("/logout", logout)
+    
+ export default router

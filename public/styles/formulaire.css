@@ -1,26 +1,9 @@
   /*******************main*******************************/
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 50px;
-    background: var(--color2);
-    gap: 3rem;
-  }
-    .connection {
-        width: 50%;
-        height: 650px;
-        min-width: 300px;
-        max-width: 400px;
-        background:var(--color3) ;
-        display: grid;
-        grid-template-rows: repeat(2, 104px);
-        align-content: space-evenly;
-        padding: 60px 45px 30px;
-        border-radius: 16px;
-        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
-    }
     .inscription{
+        margin: 5rem;
+        position:relative;
+        margin-right:auto;
+        margin-left:auto;
         width: 50%;
         min-width: 300px;
         max-width: 400px;

@@ -1,6 +1,6 @@
 :root {
   --color1: rgb(255, 255, 255);
-  --color2: ;
+  --color2: rgb(51, 196, 255);
   --color3: rgba(10, 10, 10, 0.074);
   --color4: rgb(29, 29, 29);
 }
@@ -55,6 +55,10 @@ header {
 #iconSearch {
   display: none;
 }
+
+#iconUser{
+  background: var(--color1);
+}
 .hamburger {
   background: rgba(0, 0, 0, 0);
   color: var(--color4);
@@ -66,12 +70,44 @@ header {
   color: var(--color4);
   text-decoration: none;
 }
+
+#connection{
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top:-15rem;
+  Left:50%;
+  padding: 0.5rem;
+  transform: translate(-50%,-50%);
+  background-color: white;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#connection input{
+  margin: 0.8rem;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+}
+
+#connection.loginactive{
+  transition: 1s ease-out;
+  top: 25rem;
+}
+
+input[name="connection"], input[name="deconnection"]{
+  color: var(--color1);
+  background: var(--color4);
+}
 /**************************************sidebar****************************/
 .visible {
   position: absolute;
   width: 11.25rem;
   height: 13rem;
-  top: 4.7rem;
+  top: 6.5rem;
   left: -14.5rem;
   padding: 0.5rem;
   transition: 0.5s ease-out;

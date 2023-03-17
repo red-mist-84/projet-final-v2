@@ -12,7 +12,7 @@ export function createClassicConnexion() {
 }
 
 let pool = null
-export function getPoolConnexion() {
+export function createPoolConnection() {
     if (pool) {
         return pool
     }
