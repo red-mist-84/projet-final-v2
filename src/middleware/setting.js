@@ -1,5 +1,3 @@
-
-
 export default function setting (req, res, next){
     res.locals.message = null
     res.locals.user = null

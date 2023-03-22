@@ -1,11 +1,16 @@
 import { article } from "../../src/repository/articleRepository.js"
-import jwt from 'jsonwebtoken';
+import { getAllUser } from "../../src/repository/userRepository.js"
 import argon2 from 'argon2'
-import { createPoolConnection } from "../../config/database.js";
 
 export function home(req, res) {
     console.log(req.session)
     res.render("acceuil.html")
+}
+
+export function panelPage(req, res) {
+    getAllUser().then(lists => {
+        res.render(`admin.html`, {lists})
+    })
 }
 
 export async function fouesnant(req, res) {
@@ -27,7 +32,7 @@ export async function contact(req, res) {
     res.render("contact.html")
 }
 
-export async function admin(req, res) {
+export async function login(req, res) {
     console.log(req.session)
-    res.render("admin.html")
+    res.render("acceuil.html")
 }

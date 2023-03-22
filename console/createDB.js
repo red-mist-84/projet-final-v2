@@ -31,16 +31,16 @@ con.query(`CREATE TABLE articles (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     theme_id INT NOT NULL,
     article_id INT NOT NULL,
-    content TEXT,
+    article TEXT,
     FOREIGN KEY(theme_id) REFERENCES themes(id)
 )`)
 
 con.query(`CREATE TABLE comments (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    author_id INT NOT NULL,
+    pseudo VARCHAR(255),
     theme_id INT NOT NULL,
-    content TEXT,
-    FOREIGN KEY(author_id) REFERENCES users(id),
+    comment TEXT,
+    created_at DATETIME NOT NULL DEFAULT NOW(),
     FOREIGN KEY(theme_id) REFERENCES themes(id)
 )`)
 
@@ -68,7 +68,7 @@ con.query(`INSERT INTO themes (title, slug)
         ("Crozon", "Crozon")
 `)
 
-con.query(`INSERT INTO articles (theme_id, article_id, content)
+con.query(`INSERT INTO articles (theme_id, article_id, article)
     VALUES
         (1, 1,  "Commune du Finistère, Fouesnant prend place sur la côte cornouaillaise, à une quinzaine de kilomètres de Quimper et à dix
                 kilomètres de Concarneau. La ville bretonne forme ainsi, avec Bénodet et La Forêt-Fouesnant, la Riviera bretonne."),
@@ -90,13 +90,21 @@ con.query(`INSERT INTO articles (theme_id, article_id, content)
         (1, 15, "La partie la plus ancienne de la ville qui a été fortifiée dans les années 1300 ; elle est rattachée au continent par un pont.")
 `)
 
-con.query(`INSERT INTO comments (theme_id, author_id, content)
+con.query(`INSERT INTO comments (theme_id, pseudo, comment)
     VALUES
-        (1, 3, "Merci pour le partage!"),
-        (2, 2, "Merci pour le partage!"),
-        (3, 1, "Merci pour le partage!"),
-        (2, 2, "Merci pour le partage!"),
-        (1, 3, "Merci pour le partage!")
+        (1, "shannon", "Merci pour le partage!"),
+        (2, "guigui", "Merci pour le partage!"),
+        (3, "yoyo", "Merci pour le partage!"),
+        (2, "guigui", "Merci pour le partage!"),
+        (1, "yoyo", "Merci pour le partage!")
 `)
+
+// Delete commentaires //
+
+//con.query(`DELETE FROM comment WHERE id = `)
+
+// modification commentaires //
+
+//con.query(`UPDATE comments SET comment WHERE id `)
 
 con.end()

@@ -202,3 +202,23 @@ login.addEventListener("submit", (e) => {
     alert("veuillez remplir correctement les champs");
   }
 });
+
+//------------------admin--------------------------//
+
+//js pour modifier formulaire admin
+
+/*function editBtn(task){
+    const title = task.querySelector ("h3")
+    const btnEdit = task.querySelector(".btn-edit")
+    const btnSave = task.querySelector(".btn-save")
+    const inputEdit = task.querySelector (".edit-input")
+
+        title.style.display = "none"
+        btnEdit.style.display = "none"
+        inputEdit.style.display = "block"
+        inputEdit.value = title.innerText
+        btnSave.style.display = "inline"
+
+        inputEdit.focus()
+
+}*/

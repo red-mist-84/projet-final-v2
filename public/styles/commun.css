@@ -3,6 +3,10 @@
   --color2: rgb(51, 196, 255);
   --color3: rgba(10, 10, 10, 0.074);
   --color4: rgb(29, 29, 29);
+  --nav-heigth: 106px;/*hauteur image + margin*/
+  --z-index-max: 3;
+  --z-index-min: 1;
+  --z-index-mid:2;
 }
 * {
   font-family: "Prata", serif;
@@ -39,6 +43,8 @@ header {
   color: var(--color4);
   width: 100%;
   top: 0;
+  z-index: var(--z-index-max);
+  
 }
 #navbar {
   display: flex;

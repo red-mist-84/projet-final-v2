@@ -98,20 +98,29 @@
         background: #5ef9a4;
         visibility: visible;
       }
+      
+    /***********************admin**********************/
+    
+    table, thead, tr, th, td {
+      border: 1px solid;
+      padding: 0.2rem;
+    }
     
     /********************responsive********************/
+    
     @media screen and (min-width: 1024px) {
-      .container {
-        display: grid;
+      .containerForm {
+        margin-top: 10rem;
+        /*display: grid;
         grid-template-columns: 50% 50%;
         justify-items: center;
         align-items: center;
-        margin-top: 8rem;
+        margin-top: 8rem;*/
       }
       .connection, .inscription {
         width: 400px;
       }
       .connection > h3 {
-        margin-top: -2.4rem;
+        /*margin-top: -2.4rem;*/
       }
     }

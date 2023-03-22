@@ -1,10 +1,35 @@
 <%- include("_components/header.html", {
-  styles: ["formulaire"],
+  <!--styles: ["formulaire"],-->
   title: "admin"
 }) %>
-<div class="adminContainer">
-    <h2>Admin</h2>
-    <p>Bienvenue <%= user %> </p>
-</div>
+<table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nom utilisateur</th>
+          <th>email</th>
+          <th>Commentaires</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(const list of lists){ %>
+        <tr>
+          <td><%= list.id %></td>
+          
+          <td><input id="edit-input" style="display:none" class="edit-input" type="text"><%= list.pseudo %></td>
+          <td><input id="edit-input" style="display:none" class="edit-input" type="text"><%= list.email %></td>
+          <td><input id="edit-input" style="display:none" class="edit-input" type="text"><%= list.content %></td>
+          <td><button><a href='/admin/<%= list.id %>'>Delete</a></button>
+          <td><button><a href='/admin/<%= list.id %>'>Modifier</a></button>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
 
 <%- include("_components/footer.html") %>
+
+<!--<div class="task">
+                <h3>Task 1</h3>
+                <input id="edit-input" style="display:none" class="edit-input" type="text">
+                
+            </div>
