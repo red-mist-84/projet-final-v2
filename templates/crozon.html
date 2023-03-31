@@ -1,6 +1,6 @@
 <%- include("_components/header.html", {
   styles: ["page"],
-  title: "crozonn"
+  title: "crozon"
 }) %>
 <main>
   <%- include("_components/login.html") %>
@@ -116,27 +116,51 @@
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
 
-      <h3 class="sous-title"><span>Laissez un commentaire</span></h3>
-      <form action="comments/3">
-      <div class="section-comments">
-        <div class="comment">
-          <label for="comment">Commentaire*</label><br>
-          <textarea id="comment" name="comment" rows="10" cols="86"></textarea>
-        </div>
-
-        <div class="section-identifiant">
-          <div class="pseudo">
-            <label for="pseudo">Pseudo*</label><br>
-            <input type="text" autocomplete="off" id="pseudo" />
+      <h3><span>Laissez un commentaire</span></h3>
+      <form action="/comments/new" method="POST">
+        <div class="section-comments">        
+          <div class="content-comment">
+            <label for="comment">Commentaire*</label><br>
+            <textarea class="comment-text" name="comment" rows="10" cols="86"></textarea>
+          </div>          
+      
+          <div class="section-identifiant">
+            <div class="pseudo">
+              <label for="pseudo">Pseudo*</label><br>
+              <input 
+                type="text"
+                autocomplete="off" 
+                class="pseudo" 
+                name="pseudo">
+            </div>
+            <div class="email">
+              <label for="email">Email*</label><br>
+              <input 
+                type="text" 
+                autocomplete="off" 
+                class="email" 
+                name="email">
+            </div>            
           </div>
-          <div class="email">
-            <label for="email">Email*</label><br>
-            <input type="text" autocomplete="off" id="email" />
-          </div>
+          <p>Votre adresse e-mail ne sera pas publiée. Les champs obligatoires sont indiqués avec *.</p>         
+          <input type="hidden" name="theme_id" value=3>
+          <input class="btn-formulaire" type="submit" value="Envoyer">
         </div>
-        <p>Votre adresse e-mail ne sera pas publié. Les champs obligatoires sont indiqués avec *.</p>
-        <input type="submit" value="Envoyer">
-        </form>
+      </form>
+      </div>
+      
+      <h3><span>Vos commentaires</span></h3>
+      <div class="carousel">
+        <ul class="carousel-list">
+          <% for(const comment of comments){ %>
+          <li class="carousel-item">
+            <div class="comment">
+              <p class="pseudo-content"><%= comment.pseudo %></p>
+              <p class="comment-content"><%= comment.comment %></p>
+            </div>
+          </li>
+          <% } %>
+        </ul>
       </div>
   </main>
   <%- include("_components/footer.html") %>

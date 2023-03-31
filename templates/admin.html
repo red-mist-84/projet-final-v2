@@ -1,35 +1,79 @@
 <%- include("_components/header.html", {
-  <!--styles: ["formulaire"],-->
+  styles: ["formulaire"],
   title: "admin"
 }) %>
 <table>
       <thead>
         <tr>
           <th>Id</th>
-          <th>Nom utilisateur</th>
+          <th>Pseudo</th>
           <th>email</th>
-          <th>Commentaires</th>
         </tr>
       </thead>
       <tbody>
         <% for(const list of lists){ %>
         <tr>
-          <td><%= list.id %></td>
-          
-          <td><input id="edit-input" style="display:none" class="edit-input" type="text"><%= list.pseudo %></td>
-          <td><input id="edit-input" style="display:none" class="edit-input" type="text"><%= list.email %></td>
-          <td><input id="edit-input" style="display:none" class="edit-input" type="text"><%= list.content %></td>
-          <td><button><a href='/admin/<%= list.id %>'>Delete</a></button>
-          <td><button><a href='/admin/<%= list.id %>'>Modifier</a></button>
+          <form class="form-user" method="POST" action="/updateUser">
+            <td><%= list.id %></td>
+            <td>
+              <input class="edit-pseudo-input<%= list.id %>" style="display:none" type="text" name="pseudo" value="<%= list.pseudo %>">
+              <p class="list-pseudo<%= list.id %>"><%= list.pseudo %></p>
+            </td>
+            <td>
+              <input class="edit-email-input<%= list.id %>" style="display:none" type="text" name="email" value="<%= list.email %>">
+              <p class="list-email<%= list.id %>"><%= list.email %></p>
+            </td>
+            <td>
+              <button><a href="/admin/<%= list.id %>">Supprimer</a></button>
+            </td>
+            <td>
+              <button type="button" class="btn-update<%= list.id %>" onclick="updateInfo(<%= list.id %>, '<%= list.pseudo %>', '<%= list.email %>')">Modifier</button>
+            </td>
+            <td>
+              <input type="submit" value="Valider" />
+              <input type="hidden" name="id" value="<%= list.id %>">
+            </td>
+            </form>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Pseudo</th>
+          <th>Id Page</th>
+          <th>commentaire</th>
         </tr>
+      </thead>
+      <tbody>
+        <% for(const listComment of listComments){ %>
+          <tr>
+            <form class="form-user" method="POST" action="/deleteComment">
+              <input type="hidden" name="id" value=<%=listComment.id%>>
+            <td><%= listComment.id %></td>
+            <td>
+              <p class="listComment-pseudo<%= listComment.id %>"><%= listComment.pseudo %></p>
+            </td>
+            <td>
+              <p class="listComment-them_id<%= listComment.id %>"><%= listComment.theme_id %></p>
+            </td>
+            <td>
+              <input class="edit-comment-input<%= listComment.id %>" style="display:none" type="text">
+              <p class="list-comment<%= listComment.id %>"><%= listComment.comment %></p>
+            </td>
+            <td>
+              <p class="list-comment<%= listComment.id %>"><%= listComment.created_at %></p>
+            </td>
+            <td>
+              <button class="btn-delete-comment">Supprimer</a></button>
+            </td>
+            </form>
+          </tr>
         <% } %>
       </tbody>
     </table>
 
 <%- include("_components/footer.html") %>
-
-<!--<div class="task">
-                <h3>Task 1</h3>
-                <input id="edit-input" style="display:none" class="edit-input" type="text">
-                
-            </div>

@@ -1,16 +1,38 @@
 <form id="connection" action="/acceuil" method="POST">
-          <h3>Connection</h3>
-          <label for="email">Email</label>
-          <input name="email" type="text" autocomplete="off" id="email" />
-          <label for="password">Mot de passe</label>
+        <h3>Connection</h3>
+        <label class="label-email" for="email">Email</label>
+        <input
+          name="email"
+          type="text"
+          autocomplete="off"
+          class="input-email"
+        />
+        <label class="label-password" for="password">Mot de passe</label>
+        <input
+          name="password"
+          type="password"
+          autocomplete="off"
+          class="input-password"
+        />
+        <!--<span>Email ou mot de passe incorrect</span>-->
+        <div class="div-btn">
           <input
-            name="password"
-            type="password"
-            autocomplete="off"
-            id="password"
+            type="submit"
+            class="connection"
+            name="connection"
+            value="Connection"
           />
-          <!--<span>Email ou mot de passe incorrect</span>-->
-          <input type="submit" name="connection" value="Connection" />
-          <button><a href="/logout">Déconnexion</a></button>
-          <button><a href="/contact">Inscription</a></button>
-</form>
+          <button class="btn-deconnection">
+            <a class="deconnection" href="/logout">Déconnexion</a>
+          </button>
+          <button class="btn-inscription">
+            <a class="inscription" href="/contact">Inscription</a>
+          </button>
+          <!--<a class="deconnection" href="/logout">-->
+          <!--  <button class="btn-deconnection">Déconnexion</button>-->
+          <!--</a>-->
+          <!--<a class="inscription" href="/contact">-->
+          <!--  <button class="btn-inscription">Inscription</button>-->
+          <!--</a>-->
+        </div>
+      </form>

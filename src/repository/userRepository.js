@@ -7,13 +7,13 @@ export async function createUserDb(pseudo, email, hashedPassword){
     if(info.length > 0){
         throw err
     }
-    const [user] = await createPoolConnection().query(`INSERT INTO users (pseudo, email, password) VALUES (?, ?, ?)`, [pseudo, email, hashedPassword])
+    const [user] = await createPoolConnection().query(`INSERT INTO users (pseudo, email, password, roles) VALUES (?, ?, ?, "user")`, [pseudo, email, hashedPassword])
 }
 
 // fonction qui recupere la ligne user en base de donnée //
 export async function connectUserDb(email){
     const [info] = await createPoolConnection().query(`SELECT * FROM users WHERE email = ?`, [email])
-    console.log(info)
+    console.log(email)
     if(info.length > 0){
         return info
     }
@@ -21,8 +21,13 @@ export async function connectUserDb(email){
 }
 
 // fonction pour recuperer tous les users //
-export async function getAllUser(){
+export async function getAllUserDb(){
     const [list] = await createPoolConnection().query(`SELECT * FROM users`)
+    return list
+}
+
+export async function getUserDb(email){
+    const [list] = await createPoolConnection().query(`SELECT * FROM users WHERE email = ?`, [email])
     return list
 }
 
@@ -32,8 +37,11 @@ export async function deleteUserDb(id){
     return userDelete
 }
 
-// fonction modification users //
-export async function updateUserDb(id){
-    const [userUpdate] = await createPoolConnection().query(`DELETE FROM users WHERE id = ?`, [id] )
-    return userUpdate
-}
+// fonction qui enregistre les modification //
+export const updateUserDb = async (id, pseudo, email) => {
+    console.log(id, pseudo, email)
+    const [results] = await createPoolConnection().query(`UPDATE users SET pseudo = ?, email = ? WHERE id = ?`, [pseudo, email, id],function (err, result, field){
+        if (err) throw err;
+    });
+    return results;
+};

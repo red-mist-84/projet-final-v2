@@ -1,31 +1,38 @@
-import { article } from "../../src/repository/articleRepository.js"
-import { getAllUser } from "../../src/repository/userRepository.js"
-import argon2 from 'argon2'
+import { getAllUserDb } from "../../src/repository/userRepository.js"
+import { getAllCommentDb } from "../../src/repository/commentRepository.js"
 
 export function home(req, res) {
-    console.log(req.session)
     res.render("acceuil.html")
 }
 
-export function panelPage(req, res) {
-    getAllUser().then(lists => {
-        res.render(`admin.html`, {lists})
-    })
+export function fouesnantPage(req, res) {
+  getAllCommentDb().then(listComments => {
+    const filteredComments = listComments.filter(comment => comment.theme_id === 1);
+    res.render(`fouesnant.html`, { comments: filteredComments });
+  }).catch(error => {
+    console.error(error);
+    res.sendStatus(500);
+  });
 }
 
-export async function fouesnant(req, res) {
-    const [articles] = await article(1)
-    res.render("fouesnant.html", {articles})
+export function kerlouanPage(req, res) {
+  getAllCommentDb().then(listComments => {
+    const filteredComments = listComments.filter(comment => comment.theme_id === 2);
+    res.render(`kerlouan.html`, { comments: filteredComments });
+  }).catch(error => {
+    console.error(error);
+    res.sendStatus(500);
+  });
 }
 
-export async function kerlouan(req, res) {
-    const [articles] = await article(2)
-    res.render("kerlouan.html", {articles})
-}
-
-export async function crozon(req, res) {
-    const [articles] = await article(3)
-    res.render("crozon.html", {articles})
+export function crozonPage(req, res) {
+  getAllCommentDb().then(listComments => {
+    const filteredComments = listComments.filter(comment => comment.theme_id === 3);
+    res.render(`crozon.html`, { comments: filteredComments });
+  }).catch(error => {
+    console.error(error);
+    res.sendStatus(500);
+  });
 }
 
 export async function contact(req, res) {
@@ -33,6 +40,16 @@ export async function contact(req, res) {
 }
 
 export async function login(req, res) {
-    console.log(req.session)
     res.render("acceuil.html")
+}
+
+export function panelPage(req, res) {
+    getAllUserDb().then(lists => {
+        getAllCommentDb().then(listComments => {
+            res.render(`admin.html`, {lists, listComments});   
+        })
+    }).catch(error => {
+        console.error(error);
+        res.sendStatus(500);
+    });
 }
